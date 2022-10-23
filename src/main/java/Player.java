@@ -13,6 +13,7 @@ public class Player {
     int[]terrainSize={27,80};
     char [][]camera;
 
+    boolean rigth=true;
     Scanner input=new Scanner(System.in);
     
     String move;
@@ -32,8 +33,8 @@ public class Player {
     public void MoveComands(char [][] terrain){
      move =(input.nextLine());
     if(!move.equals("")){
-          if(move.equals("d")&&terrain[position[0]][position[1]+1]!='#'&&position[1]+1<whid-1)position[1]+=1;
-          if(move.equals("a")&&terrain[position[0]][position[1]-1]!='#'&&position[1]-1>0)position[1]-=1;
+          if(move.equals("d")&&terrain[position[0]][position[1]+1]!='#'&&position[1]+1<whid-1){position[1]+=1;rigth=true;}
+          if(move.equals("a")&&terrain[position[0]][position[1]-1]!='#'&&position[1]-1>0){position[1]-=1;rigth=false;}
           if(move.equals("s")&&terrain[position[0]+1][position[1]]!='#'&&position[0]+1<heigth-1)position[0]+=1;
           if(move.equals("w")&&terrain[position[0]-1][position[1]]!='#'&&position[0]-1>0)position[0]-=1;
         }
