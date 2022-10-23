@@ -7,10 +7,12 @@ import java.util.Scanner;
  */
 public class Player {
     char player;
-    int points,cameraWhid,cameraHeigth,whid,heigth;
+    int cameraWhid,cameraHeigth,whid,heigth;
     int []position={13,30};
     int []centerCamera={13,30};
     int[]terrainSize={27,80};
+    char [][]camera;
+
     Scanner input=new Scanner(System.in);
     
     String move;
@@ -23,19 +25,18 @@ public class Player {
        do{
           position[1]=30+(int)(Math.random()*20);
        }while(terrain.currentTerrain[position[0]][position[1]]!=' ');
-       
+       camera=new char[2*cameraHeigth+3][2*cameraWhid+3];
        CameraControler();
     }
     
     public void MoveComands(char [][] terrain){
-     move =(input.next());
+     move =(input.nextLine());
     if(!move.equals("")){
           if(move.equals("d")&&terrain[position[0]][position[1]+1]!='#'&&position[1]+1<whid-1)position[1]+=1;
           if(move.equals("a")&&terrain[position[0]][position[1]-1]!='#'&&position[1]-1>0)position[1]-=1;
           if(move.equals("s")&&terrain[position[0]+1][position[1]]!='#'&&position[0]+1<heigth-1)position[0]+=1;
           if(move.equals("w")&&terrain[position[0]-1][position[1]]!='#'&&position[0]-1>0)position[0]-=1;
         }
-         
     }
     public void CameraControler(){
         if(position[1]>cameraWhid-1 &&position[1]<terrainSize[1]-cameraWhid){
@@ -59,5 +60,31 @@ public class Player {
            System.out.println("");
            }
     }
+    public void PlayerCamera(char [][]current){
 
+        CameraControler();
+        int y=0;
+        for(int i=position[0]-cameraHeigth-1;i<=position[0]+cameraHeigth+1;i++){
+            int x=0;
+            for(int j=position[1]-cameraWhid-1;j<=position[1]+cameraWhid+1;j++){
+
+                if(i==position[0]-cameraHeigth-1||i==position[0]+cameraHeigth+1||j==position[1]-cameraWhid-1||j==position[1]+cameraWhid+1){
+                    camera[y][x]='$';
+                }else{
+                    camera[y][x]=current[i][j];
+                }
+                x+=1;
+            }
+            y+=1;
+        }
+    }
+    public void PrintCamera(){
+        for(char []x : camera){
+            for(char c: x){
+                System.out.print(c);
+            }
+            System.out.println("");
+        }
+
+    }
 }

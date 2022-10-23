@@ -28,9 +28,9 @@ public class Game {
                // terrain.UpdateCurrentTerrain(pl,27 ,80);
               
            }
-           
            for(Player pl:Players){
-             pl.PrintPlayerCamera(terrain.currentTerrain);
+             pl.PlayerCamera(terrain.currentTerrain);
+             pl.PrintCamera();
            }
            
         }while(true);

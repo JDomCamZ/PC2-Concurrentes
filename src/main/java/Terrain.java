@@ -66,4 +66,9 @@ public class Terrain {
         }
      currentTerrain= current;
     }
+
+    public char[][] GetMap(){
+       return currentTerrain;
+    }
+
 }
