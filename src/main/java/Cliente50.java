@@ -16,6 +16,10 @@ class Cliente50{
         Cliente50 objcli = new Cliente50(miip, myp);
         objcli.iniciar();
     }
+
+    Cliente50(String IP, String puerto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     void iniciar(){
        new Thread(
             new Runnable() {
