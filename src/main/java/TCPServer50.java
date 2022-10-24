@@ -20,9 +20,9 @@ public class TCPServer50 {
     public OnMessageReceived getMessageListener(){
         return this.messageListener;
     }
-    public void sendMessageTCPServer(String message){
+    public void sendMessageTCPServer(char[][] map){
         for (int i = 1; i <= nrcli; i++) {
-            sendclis[i].sendMessage(message);
+            sendclis[i].sendMessage(map);
             System.out.println("ENVIANDO A JUGADOR " + (i));
         }
     }
