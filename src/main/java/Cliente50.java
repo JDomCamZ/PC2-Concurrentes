@@ -29,7 +29,7 @@ class Cliente50{
                     mTcpClient = new TCPClient50(SERVERIP, port,
                         new TCPClient50.OnMessageReceived(){
                             @Override
-                            public void messageReceived(String message){
+                            public void messageReceived(char[][] message){
                                 ClienteRecibe(message);
                             }
                         }
@@ -50,7 +50,7 @@ class Cliente50{
         System.out.println("Cliente bandera 02");
     
     }
-    void ClienteRecibe(String llego){
+    void ClienteRecibe(char[][] llego){
         System.out.println("CLINTE50 El mensaje::" + llego);
 
     }
