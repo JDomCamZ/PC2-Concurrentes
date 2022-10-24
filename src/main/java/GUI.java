@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
 public class GUI extends javax.swing.JFrame {
     Verificador verificador = new Verificador();
     Nombres nombres = new Nombres();
+    Cliente50 terreno;
+    Servidor50 jugador;
     /**
      * Creates new form GUI
      */
@@ -189,15 +191,23 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_puertoTextActionPerformed
 
     private void conectarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarBotonActionPerformed
-        // TODO add your handling code here:
-        if(Verificador.verificarIp(ipText.getText().toString()) && Verificador.verificarPuerto(puertoText.getText().toString())){
-            conexionLabel.setText("conectado");
-            ipText.setEnabled(false);
-            puertoText.setEnabled(false);
-            conectarBoton.setEnabled(false);
-            pantalla.setText(nombres.pantalla_inicio);
+        // TODO add your handling code here
+        String IP = ipText.getText();
+        String puerto = puertoText.getText();
+        if(Verificador.verificarIp(IP) && Verificador.verificarPuerto(puerto)){
+            try{
+                terreno = new Cliente50(IP, puerto);
+                conexionLabel.setText("conectado");
+                ipText.setEnabled(false);
+                puertoText.setEnabled(false);
+                conectarBoton.setEnabled(false);
+                pantalla.setText(nombres.pantalla_inicio);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "No se pudo establecer Conexion");
+            }
         }else{
             conexionLabel.setText("No conectado");
+            JOptionPane.showMessageDialog(null, "IP o puerto no validos");
         }
     }//GEN-LAST:event_conectarBotonActionPerformed
 
