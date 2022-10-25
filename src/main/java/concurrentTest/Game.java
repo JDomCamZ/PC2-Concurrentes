@@ -1,5 +1,6 @@
 package concurrentTest;
 
+import java.lang.management.PlatformLoggingMXBean;
 import java.util.ArrayList;
 /**
  *
@@ -17,14 +18,37 @@ public class Game {
 
         for(int i=0;i<n;i++){
             char name=(char)('a'+i);
-            Player p=new Player(name ,terrain);
+            Terrain t=new Terrain(80,27);
+            for(Player player:Players){
+                t.Print(player.position[1],player.position[0],player.playerChar);
+            }
+            Player p=new Player(name ,t);
+            p.RandomSpawnPosition();
+            p.terrainPlayer.Print(p.position[1],p.position[0],p.playerChar);//
             Players.add(p);
         }
+
         do{
+            for(Player pl:Players){
+                Terrain newTerrain=new Terrain(80,27);
+                newTerrain.startMap();
+                for(Player Other:Players){
+                    newTerrain.Print(Other.position[1],Other.position[0],Other.playerChar);
+                }
+                pl.terrainPlayer=newTerrain;
+            }
             for(Player pl:Players){
                 System.out.println("Mueve jugador "+pl.playerChar);
                 pl.PositionInMap();
-                terrain.Print(pl.position[1],pl.position[0],pl.playerChar);
+            }
+
+            for(Player pl:Players){
+                Terrain newTerrain=new Terrain(80,27);
+                newTerrain.startMap();
+                for(Player Other:Players){
+                    newTerrain.Print(Other.position[1],Other.position[0],Other.playerChar);
+                }
+                pl.terrainPlayer=newTerrain;
             }
            //terrain.startMap();
            /*for(Player pl:Players){
@@ -33,7 +57,6 @@ public class Game {
                terrain.Delete(pl);
                pl.Move(terrain.currentTerrain);
                terrain.Print(pl);
-
                // terrain.UpdateCurrentTerrain(pl,27 ,80);
            }*/
            for(Player pl:Players){

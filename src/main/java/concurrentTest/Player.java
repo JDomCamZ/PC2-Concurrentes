@@ -26,26 +26,28 @@ public class Player{
        terrain.startMap();
        whid=terrain.whid;
        heigth=terrain.heigth;
-       do{
-          position[1]=30+(int)(Math.random()*20);
-       }while(terrain.currentTerrain[position[0]][position[1]]!=' ');
        camera=new char[2*cameraHeigth+3][2*cameraWhid+3];
        CameraControler();
+    }
+    public void RandomSpawnPosition(){
+        do{
+            position[1]=30+(int)(Math.random()*20);
+        }while(terrainPlayer.currentTerrain[position[0]][position[1]]!=' ');
     }
     public void Move(){
           char [][] terrain=terrainPlayer.Map;
           move =(input.nextLine());
-          if(move.equals("d")&&terrain[position[0]][position[1]+1]!='#'&&position[1]+1<whid-1){position[1]+=1;rigth=true;}
-          if(move.equals("a")&&terrain[position[0]][position[1]-1]!='#'&&position[1]-1>0){position[1]-=1;rigth=false;}
-          if(move.equals("s")&&terrain[position[0]+1][position[1]]!='#'&&position[0]+1<heigth-1)position[0]+=1;
-          if(move.equals("w")&&terrain[position[0]-1][position[1]]!='#'&&position[0]-1>0)position[0]-=1;
+          if(move.equals("d")&&terrain[position[0]][position[1]+1]==' '&&position[1]+1<whid-1){position[1]+=1;rigth=true;}
+          if(move.equals("a")&&terrain[position[0]][position[1]-1]==' '&&position[1]-1>0){position[1]-=1;rigth=false;}
+          if(move.equals("s")&&terrain[position[0]+1][position[1]]==' '&&position[0]+1<heigth-1)position[0]+=1;
+          if(move.equals("w")&&terrain[position[0]-1][position[1]]==' '&&position[0]-1>0)position[0]-=1;
     }
     public void Move(String di){
         char [][] terrain=terrainPlayer.Map;
-            if(di.equals("d")&&terrain[position[0]][position[1]+1]!='#'&&position[1]+1<whid-1){position[1]+=1;rigth=true;}
-            if(di.equals("a")&&terrain[position[0]][position[1]-1]!='#'&&position[1]-1>0){position[1]-=1;rigth=false;}
-            if(di.equals("s")&&terrain[position[0]+1][position[1]]!='#'&&position[0]+1<heigth-1)position[0]+=1;
-            if(di.equals("w")&&terrain[position[0]-1][position[1]]!='#'&&position[0]-1>0)position[0]-=1;
+            if(di.equals("d")&&terrain[position[0]][position[1]+1]==' '&&position[1]+1<whid-1){position[1]+=1;rigth=true;}
+            if(di.equals("a")&&terrain[position[0]][position[1]-1]==' '&&position[1]-1>0){position[1]-=1;rigth=false;}
+            if(di.equals("s")&&terrain[position[0]+1][position[1]]==' '&&position[0]+1<heigth-1)position[0]+=1;
+            if(di.equals("w")&&terrain[position[0]-1][position[1]]==' '&&position[0]-1>0)position[0]-=1;
     }
     public void MoveRigth(){
         char [][] terrain=terrainPlayer.Map;
