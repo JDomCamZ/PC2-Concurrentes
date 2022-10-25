@@ -103,7 +103,7 @@ public class Servidor50 {
     }
 }
 class BattleChopperGameStatus {
-    public int height = 11, width = 39;
+    public int height = 27, width = 80;
     public ArrayList<Ship> ships = new ArrayList<>();
     //public ArrayList<Enemy> enemies = new ArrayList<>();
 
