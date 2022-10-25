@@ -1,3 +1,5 @@
+package concurrentTest;
+
 import java.util.ArrayList;
 /**
  *
@@ -15,12 +17,17 @@ public class Game {
 
         for(int i=0;i<n;i++){
             char name=(char)('a'+i);
-            Players.add(new Player(name ,terrain));
-            terrain.Print(Players.get(i));
+            Player p=new Player(name ,terrain);
+            Players.add(p);
         }
         do{
+            for(Player pl:Players){
+                System.out.println("Mueve jugador "+pl.playerChar);
+                pl.PositionInMap();
+                terrain.Print(pl.position[1],pl.position[0],pl.playerChar);
+            }
            //terrain.startMap();
-           for(Player pl:Players){
+           /*for(Player pl:Players){
                System.out.println("Mueve jugador "+pl.playerChar);
                System.out.println(pl.getClass().getTypeName());
                terrain.Delete(pl);
@@ -28,9 +35,9 @@ public class Game {
                terrain.Print(pl);
 
                // terrain.UpdateCurrentTerrain(pl,27 ,80);
-           }
+           }*/
            for(Player pl:Players){
-             pl.PlayerCamera(terrain.currentTerrain);
+             pl.PlayerCamera();
              pl.PrintCamera();
            }
         }while(true);
