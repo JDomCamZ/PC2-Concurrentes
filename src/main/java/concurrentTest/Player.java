@@ -51,19 +51,19 @@ public class Player{
     }
     public void MoveRigth(){
         char [][] terrain=terrainPlayer.Map;
-        if(terrain[position[0]][position[1]+1]!='#'&&position[1]+1<whid-1){position[1]+=1;rigth=true;}
+        if(terrain[position[0]][position[1]+1]==' '&&position[1]+1<whid-1){position[1]+=1;rigth=true;}
     }
     public void MoveLeft(){
         char [][] terrain=terrainPlayer.Map;
-        if(terrain[position[0]][position[1]-1]!='#'&&position[1]-1>0){position[1]-=1;rigth=false;}
+        if(terrain[position[0]][position[1]-1]==' '&&position[1]-1>0){position[1]-=1;rigth=false;}
     }
     public void MoveUp(){
         char [][] terrain=terrainPlayer.Map;
-        if(terrain[position[0]-1][position[1]]!='#'&&position[0]-1>0)position[0]-=1;
+        if(terrain[position[0]-1][position[1]]==' '&&position[0]-1>0)position[0]-=1;
     }
     public void MoveDown(){
         char [][] terrain=terrainPlayer.Map;
-        if(terrain[position[0]+1][position[1]]!='#'&&position[0]+1<heigth-1)position[0]+=1;
+        if(terrain[position[0]+1][position[1]]==' '&&position[0]+1<heigth-1)position[0]+=1;
     }
 
     public void PositionInMap(){

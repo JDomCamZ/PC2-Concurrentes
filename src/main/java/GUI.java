@@ -1,6 +1,7 @@
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
+import java.awt.event.KeyListener;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author ArmandoLluen <armando.lluen.g@uni.pe>
  */
-public class GUI extends javax.swing.JFrame {
+public class GUI extends JFrame implements KeyListener {
     Verificador verificador = new Verificador();
     Nombres nombres = new Nombres();
     Cliente50 terreno;
@@ -21,9 +22,12 @@ public class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     public GUI() {
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(null);
+        this.setVisible(true);
+        this.addKeyListener(this);
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -241,15 +245,15 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ipTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipTextActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_ipTextActionPerformed
 
     private void puertoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puertoTextActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_puertoTextActionPerformed
 
     private void conectarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarBotonActionPerformed
-        // TODO add your handling code here
+
         String IP = ipText.getText();
         String puerto = puertoText.getText();
         if(Verificador.verificarIp(IP) && Verificador.verificarPuerto(puerto)){
@@ -270,11 +274,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_conectarBotonActionPerformed
 
     private void CerrarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarBotonActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_CerrarBotonActionPerformed
 
     private void startBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBotonActionPerformed
-        // TODO add your handling code here:
         if(!conectarBoton.isEnabled()){
             //comienza el juego
             startBoton.setEnabled(false);
@@ -283,14 +285,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_startBotonActionPerformed
 
     private void cambiarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarBotonActionPerformed
-        // TODO add your handling code here:
         ipText.setEnabled(true);
         puertoText.setEnabled(true);
         conectarBoton.setEnabled(true);
     }//GEN-LAST:event_cambiarBotonActionPerformed
 
     private void izquierdaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_izquierdaBotonActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_izquierdaBotonActionPerformed
 
     private void abajoBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abajoBotonActionPerformed
@@ -311,6 +311,22 @@ public class GUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_arribaBotonActionPerformed
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+        System.out.println("<<<<<<<<<");
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println("<<<<<<<<<");
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        System.out.println("<<<<<<<<<");
+    }
+
+    /*
     private void keyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyReleased
         // TODO add your handling code here:
         
@@ -333,7 +349,7 @@ public class GUI extends javax.swing.JFrame {
             default:
                 break;
         }
-    }//GEN-LAST:event_keyReleased
+    }//GEN-LAST:event_keyReleased*/
 
     /**
      * @param args the command line arguments
@@ -363,11 +379,8 @@ public class GUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUI().setVisible(true);
-            }
-        });
+          new GUI().setVisible(true);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

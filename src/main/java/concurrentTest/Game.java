@@ -28,18 +28,21 @@ public class Game {
             Players.add(p);
         }
 
-        do{
+
+
+        do{/*
             for(Player pl:Players){
+
+            }*/
+            for(Player pl:Players){
+                System.out.println("Mueve jugador "+pl.playerChar);
+                pl.PositionInMap();
                 Terrain newTerrain=new Terrain(80,27);
                 newTerrain.startMap();
                 for(Player Other:Players){
                     newTerrain.Print(Other.position[1],Other.position[0],Other.playerChar);
                 }
                 pl.terrainPlayer=newTerrain;
-            }
-            for(Player pl:Players){
-                System.out.println("Mueve jugador "+pl.playerChar);
-                pl.PositionInMap();
             }
 
             for(Player pl:Players){
@@ -50,15 +53,6 @@ public class Game {
                 }
                 pl.terrainPlayer=newTerrain;
             }
-           //terrain.startMap();
-           /*for(Player pl:Players){
-               System.out.println("Mueve jugador "+pl.playerChar);
-               System.out.println(pl.getClass().getTypeName());
-               terrain.Delete(pl);
-               pl.Move(terrain.currentTerrain);
-               terrain.Print(pl);
-               // terrain.UpdateCurrentTerrain(pl,27 ,80);
-           }*/
            for(Player pl:Players){
              pl.PlayerCamera();
              pl.PrintCamera();
