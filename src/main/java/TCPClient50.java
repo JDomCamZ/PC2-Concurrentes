@@ -11,14 +11,14 @@ import java.net.Socket;
 
 public class TCPClient50 {
 
-    private String servermsj;
+    private char[][] servermsj;
     public  String SERVERIP;
     public static int SERVERPORT;
     private OnMessageReceived mMessageListener = null;
     private boolean mRun = false;
 
     PrintWriter out;
-    BufferedReader in;
+    InputStream in;
 
     public TCPClient50(String ip, int port, OnMessageReceived listener) {
         SERVERIP = ip;
@@ -44,9 +44,9 @@ public class TCPClient50 {
                 out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
                 System.out.println("TCP Client"+ "C: Sent.");
                 System.out.println("TCP Client"+ "C: Done.");
-                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                in = socket.getInputStream();
                 while (mRun) {
-                    servermsj = in.readLine();
+                    servermsj = readBoard(in);
                     if (servermsj != null && mMessageListener != null) {
                         mMessageListener.messageReceived(servermsj);
                     }
@@ -63,6 +63,15 @@ public class TCPClient50 {
         }
     }
     public interface OnMessageReceived {
-        public void messageReceived(String message);
+        public void messageReceived(char[][] message);
+    }
+    public static char[][] readBoard(InputStream in) throws IOException {
+        char[][] board = new char[27][80];
+        for(int i=0;i<22;i++) {
+            for(int j=0; j<80;j++) {
+                board[i][j] = (char) in.read();
+            }
+        }
+        return board;
     }
 }

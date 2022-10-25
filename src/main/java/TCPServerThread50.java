@@ -60,9 +60,9 @@ public class TCPServerThread50 extends Thread{
         running = false;
     }
     
-    public void sendMessage(String message){//funcion de trabajo
+    public void sendMessage(char[][] map){//funcion de trabajo
         if (mOut != null && !mOut.checkError()) {
-            mOut.println( message);
+            mOut.println(map);
             mOut.flush();
         }
     }

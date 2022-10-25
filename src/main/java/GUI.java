@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
 public class GUI extends javax.swing.JFrame {
     Verificador verificador = new Verificador();
     Nombres nombres = new Nombres();
+    Cliente50 terreno;
+    Servidor50 jugador;
     /**
      * Creates new form GUI
      */
@@ -44,6 +46,11 @@ public class GUI extends javax.swing.JFrame {
         CerrarBoton = new javax.swing.JButton();
         startBoton = new javax.swing.JButton();
         cambiarBoton = new javax.swing.JButton();
+        izquierdaBoton = new javax.swing.JButton();
+        abajoBoton = new javax.swing.JButton();
+        derechaBoton = new javax.swing.JButton();
+        centroBoton = new javax.swing.JButton();
+        arribaBoton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -114,6 +121,41 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        izquierdaBoton.setText("<");
+        izquierdaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                izquierdaBotonActionPerformed(evt);
+            }
+        });
+
+        abajoBoton.setText("v");
+        abajoBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abajoBotonActionPerformed(evt);
+            }
+        });
+
+        derechaBoton.setText(">");
+        derechaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                derechaBotonActionPerformed(evt);
+            }
+        });
+
+        centroBoton.setText("0");
+        centroBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                centroBotonActionPerformed(evt);
+            }
+        });
+
+        arribaBoton.setText("^");
+        arribaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arribaBotonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,20 +181,34 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(conexionLabel)
-                            .addComponent(jLabel4)))
+                            .addComponent(jLabel4))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cambiarBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(startBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CerrarBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(izquierdaBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(abajoBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(centroBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(derechaBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(arribaBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cambiarBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(startBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(CerrarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(49, 49, 49))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(conexionLabel, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -167,13 +223,22 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(startBoton)
                         .addGap(18, 18, 18)
                         .addComponent(cambiarBoton)
                         .addGap(18, 18, 18)
-                        .addComponent(CerrarBoton))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CerrarBoton)
+                        .addGap(27, 27, 27)
+                        .addComponent(arribaBoton)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(izquierdaBoton)
+                            .addComponent(derechaBoton)
+                            .addComponent(centroBoton))
+                        .addGap(18, 18, 18)
+                        .addComponent(abajoBoton)))
                 .addGap(25, 25, 25))
         );
 
@@ -189,15 +254,23 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_puertoTextActionPerformed
 
     private void conectarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarBotonActionPerformed
-        // TODO add your handling code here:
-        if(Verificador.verificarIp(ipText.getText().toString()) && Verificador.verificarPuerto(puertoText.getText().toString())){
-            conexionLabel.setText("conectado");
-            ipText.setEnabled(false);
-            puertoText.setEnabled(false);
-            conectarBoton.setEnabled(false);
-            pantalla.setText(nombres.pantalla_inicio);
+        // TODO add your handling code here
+        String IP = ipText.getText();
+        String puerto = puertoText.getText();
+        if(Verificador.verificarIp(IP) && Verificador.verificarPuerto(puerto)){
+            try{
+                //terreno = new Cliente50(IP, puerto);
+                conexionLabel.setText("conectado");
+                ipText.setEnabled(false);
+                puertoText.setEnabled(false);
+                conectarBoton.setEnabled(false);
+                pantalla.setText(nombres.pantalla_inicio);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "No se pudo establecer Conexion");
+            }
         }else{
             conexionLabel.setText("No conectado");
+            JOptionPane.showMessageDialog(null, "IP o puerto no validos");
         }
     }//GEN-LAST:event_conectarBotonActionPerformed
 
@@ -242,6 +315,26 @@ public class GUI extends javax.swing.JFrame {
         conectarBoton.setEnabled(true);
     }//GEN-LAST:event_cambiarBotonActionPerformed
 
+    private void izquierdaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_izquierdaBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_izquierdaBotonActionPerformed
+
+    private void abajoBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abajoBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_abajoBotonActionPerformed
+
+    private void derechaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_derechaBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_derechaBotonActionPerformed
+
+    private void centroBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_centroBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_centroBotonActionPerformed
+
+    private void arribaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arribaBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_arribaBotonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -279,10 +372,15 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CerrarBoton;
+    private javax.swing.JButton abajoBoton;
+    private javax.swing.JButton arribaBoton;
     private javax.swing.JButton cambiarBoton;
+    private javax.swing.JButton centroBoton;
     private javax.swing.JButton conectarBoton;
     private javax.swing.JLabel conexionLabel;
+    private javax.swing.JButton derechaBoton;
     private javax.swing.JTextField ipText;
+    private javax.swing.JButton izquierdaBoton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
