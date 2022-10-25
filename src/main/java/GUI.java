@@ -22,8 +22,12 @@ public class GUI extends JFrame implements KeyListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         this.setVisible(true);
-        this.addKeyListener(this);
         initComponents();
+        puertoText.addKeyListener(this);
+        pantalla.addKeyListener(this);
+        ipText.addKeyListener(this);
+        this.addKeyListener(this);
+        pantalla.setText(nombres.pantalla_inicio);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -376,7 +380,7 @@ public class GUI extends JFrame implements KeyListener {
         //</editor-fold>
 
         /* Create and display the form */
-          new GUI().setVisible(true);
+          new GUI();
 
     }
 
@@ -389,15 +393,15 @@ public class GUI extends JFrame implements KeyListener {
     private javax.swing.JButton conectarBoton;
     private javax.swing.JLabel conexionLabel;
     private javax.swing.JButton derechaBoton;
-    private javax.swing.JTextField ipText;
+     javax.swing.JTextField ipText;
     private javax.swing.JButton izquierdaBoton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea pantalla;
-    private javax.swing.JTextField puertoText;
+    javax.swing.JTextArea pantalla;
+    javax.swing.JTextField puertoText;
     private javax.swing.JButton startBoton;
     // End of variables declaration//GEN-END:variables
 }
