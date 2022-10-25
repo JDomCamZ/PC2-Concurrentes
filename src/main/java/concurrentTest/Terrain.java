@@ -1,3 +1,5 @@
+package concurrentTest;
+
 public class Terrain {
     int heigth,whid;
    char [][] Map={
@@ -42,16 +44,16 @@ public class Terrain {
                     }  
            }
     }
-   public void Print(Player p){
-        currentTerrain[p.position[0]][p.position[1]]=p.playerChar;
+   public void Print(int x,int y,int c){
+        currentTerrain[y][x]=(char)c;
    }
-   public void Delete(Player p){
-       currentTerrain[p.position[0]][p.position[1]]=' ';
+   public void Delete(int x,int y){
+       currentTerrain[y][x]=' ';
    }
-    public void UpdateCurrentTerrain(Player p,int h,int w){
+    public void UpdateCurrentTerrain(Player p){
      char [][] current=new char[27][80];
-     for(int i=0;i<h;i++){
-           for(int j=0;j<w;j++){
+     for(int i=0;i<heigth;i++){
+           for(int j=0;j<whid;j++){
                   int []pos=p.position;
                   if(pos[0]==i&&pos[1]==j){
                      current[pos[0]][pos[1]]=p.playerChar;
