@@ -54,8 +54,8 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                formKeyTyped(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                GUI.this.keyReleased(evt);
             }
         });
 
@@ -64,11 +64,6 @@ public class GUI extends javax.swing.JFrame {
         ipText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ipTextActionPerformed(evt);
-            }
-        });
-        ipText.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                ipTextKeyTyped(evt);
             }
         });
 
@@ -274,38 +269,17 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_conectarBotonActionPerformed
 
-    private void ipTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ipTextKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ipTextKeyTyped
-
-    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
-        // TODO add your handling code here:
-        char keyCode = evt.getKeyChar();
-        
-        JOptionPane.showMessageDialog(null,keyCode);
-        switch(keyCode) { 
-            case KeyEvent.VK_UP:
-                JOptionPane.showMessageDialog(null, "boton arriba");
-                break;
-            case KeyEvent.VK_DOWN:
-                JOptionPane.showMessageDialog(null, "boton abajo");
-                break;
-            case KeyEvent.VK_LEFT:
-                JOptionPane.showMessageDialog(null, "boton izquierda");
-                break;
-            case KeyEvent.VK_RIGHT :
-                JOptionPane.showMessageDialog(null, "boton derecha");
-                break;
-         }
-        
-    }//GEN-LAST:event_formKeyTyped
-
     private void CerrarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarBotonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CerrarBotonActionPerformed
 
     private void startBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBotonActionPerformed
         // TODO add your handling code here:
+        if(!conectarBoton.isEnabled()){
+            //comienza el juego
+            startBoton.setEnabled(false);
+            this.setFocusTraversalKeysEnabled(true);
+        }
     }//GEN-LAST:event_startBotonActionPerformed
 
     private void cambiarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarBotonActionPerformed
@@ -333,7 +307,33 @@ public class GUI extends javax.swing.JFrame {
 
     private void arribaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arribaBotonActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_arribaBotonActionPerformed
+
+    private void keyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyReleased
+        // TODO add your handling code here:
+        
+        int keyCode = evt.getKeyCode();
+        
+        switch (keyCode) {
+            case KeyEvent.VK_W:
+                JOptionPane.showMessageDialog(null, "boton arriba");
+                System.out.println("boton arriba");
+                break;
+            case KeyEvent.VK_S:
+                JOptionPane.showMessageDialog(null, "boton abajo");
+                break;
+            case KeyEvent.VK_A:
+                JOptionPane.showMessageDialog(null, "boton izquierda");
+                break;
+            case KeyEvent.VK_D:
+                JOptionPane.showMessageDialog(null, "boton derecha");
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_keyReleased
 
     /**
      * @param args the command line arguments
