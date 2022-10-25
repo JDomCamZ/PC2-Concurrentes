@@ -20,19 +20,19 @@ public class TCPServer50 {
     public OnMessageReceived getMessageListener(){
         return this.messageListener;
     }
-    public void sendMessageTCPServer(char[][] map){
+    public void sendMessageTCPServer(String message){
         for (int i = 1; i <= nrcli; i++) {
-            sendclis[i].sendMessage(map);
+            sendclis[i].sendMessage(message);
             System.out.println("ENVIANDO A JUGADOR " + (i));
         }
     }
-    
+
     public void run(){
         running = true;
         try{
             System.out.println("TCP Server"+"S : Connecting...");
             serverSocket = new ServerSocket(SERVERPORT);
-            
+
             while(running){
                 Socket client = serverSocket.accept();
                 System.out.println("TCP Server"+"S: Receiving...");
@@ -42,9 +42,9 @@ public class TCPServer50 {
                 Thread t = new Thread(sendclis[nrcli]);
                 t.start();
                 System.out.println("Nuevo conectado:"+ nrcli+" jugadores conectados");
-                
+
             }
-            
+
         }catch( Exception e){
             System.out.println("Error"+e.getMessage());
         }finally{
@@ -53,7 +53,7 @@ public class TCPServer50 {
     }
     public  TCPServerThread50[] getClients(){
         return sendclis;
-    } 
+    }
 
     public interface OnMessageReceived {
         public void messageReceived(String message);
