@@ -5,8 +5,8 @@ import java.util.Scanner;
  *
  * @author Miguel Huamani <miguel.huamani.r@uni.pe>
  */
-public class Player {
-    char player;
+public class Player implements ThreadEntity{
+    char playerChar;
     int cameraWhid,cameraHeigth,whid,heigth;
     int []position={13,30};
     int []centerCamera={13,30};
@@ -18,7 +18,7 @@ public class Player {
     
     String move;
     public Player(char p,Terrain terrain){
-       player=p;
+       playerChar =p;
        cameraWhid=16;
        cameraHeigth=9;
        whid=terrain.whid;
@@ -29,8 +29,8 @@ public class Player {
        camera=new char[2*cameraHeigth+3][2*cameraWhid+3];
        CameraControler();
     }
-    
-    public void MoveComands(char [][] terrain){
+    @Override
+    public void Move(char [][] terrain){
      move =(input.nextLine());
     if(!move.equals("")){
           if(move.equals("d")&&terrain[position[0]][position[1]+1]!='#'&&position[1]+1<whid-1){position[1]+=1;rigth=true;}

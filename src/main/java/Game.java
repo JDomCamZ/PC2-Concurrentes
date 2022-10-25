@@ -12,27 +12,27 @@ public class Game {
         terrain.startMap();
         
         ArrayList <Player>Players =new ArrayList();
-        
+
         for(int i=0;i<n;i++){
             char name=(char)('a'+i);
             Players.add(new Player(name ,terrain));
-            terrain.PrintPlayer(Players.get(i));
+            terrain.Print(Players.get(i));
         }
         do{
            //terrain.startMap();
            for(Player pl:Players){
-               System.out.println("Mueve jugador "+pl.player);
-               terrain.DeletePrintPlayer(pl);
-               pl.MoveComands(terrain.currentTerrain);
-               terrain.PrintPlayer(pl);
+               System.out.println("Mueve jugador "+pl.playerChar);
+               System.out.println(pl.getClass().getTypeName());
+               terrain.Delete(pl);
+               pl.Move(terrain.currentTerrain);
+               terrain.Print(pl);
+
                // terrain.UpdateCurrentTerrain(pl,27 ,80);
-              
            }
            for(Player pl:Players){
              pl.PlayerCamera(terrain.currentTerrain);
              pl.PrintCamera();
            }
-           
         }while(true);
     }
 }
